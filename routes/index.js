@@ -3,7 +3,7 @@ const router = new Router();
 (mongoose = require("mongoose")), (Movie = require("../models/movie.model"));
 
 //Todo Get the list of movies, then select()
-router.get("./movies", async (req, res, next) => {
+router.get("/movies", async (req, res, next) => {
   try {
     const movies = await Movie.find().select({ title: 1, director: 1, _id: 0 });
 
@@ -15,7 +15,7 @@ router.get("./movies", async (req, res, next) => {
 });
 
 //Todo Get all details about each movie
-router.get("./movie/:id", async (req, res, next) => {
+router.get("/movie/:id", async (req, res, next) => {
   try {
     const movieById = await Movie.findById(req.params.id, { __v: 0 });
 
